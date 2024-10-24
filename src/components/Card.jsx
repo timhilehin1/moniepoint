@@ -14,7 +14,7 @@ function Card({ task, toggleTaskStatus }) {
 			/>
 			<p
 				className={`flex-1 text-wrap break-words max-w-[9.3rem] ${
-					task?.status ? "line-through text-[#8D8D8D]" : ""
+					task?.status ? "line-through text-[#8D8D8D]" : "text-baseTextColor font-[500]"
 				}`}
 			>
 				{task?.name}

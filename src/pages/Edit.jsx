@@ -29,7 +29,7 @@ function Edit({ editTask, tasks, deleteTask }) {
 	};
 
 	return (
-		<section className="min-h-screen flex flex-col justify-between w-full relative">
+		<section className="h-screen flex flex-col relative">
 			<header className="bg-headerColor h-[7rem] p-2 text-white flex justify-center items-center">
 				<p className="text-center">Edit Task</p>
 			</header>
@@ -45,24 +45,24 @@ function Edit({ editTask, tasks, deleteTask }) {
 							className="border-[2px] focus:outline-[#CBCBCB] border-[#CBCBCB] w-full max-w-[37.25rem] text-baseTextColor p-4 rounded-lg"
 						/>
 					</div>
-
-					{/* //actions */}
-					<div className=" flex w-full gap-4 absolute bottom-4">
-						<button
-							onClick={handleDelete}
-							className="p-4 rounded-lg w-full md:w-[25%] text-white  bg-[#AB3535] mt-auto "
-						>
-							Delete
-						</button>
-						<button
-							onClick={handleSubmit}
-							type="submit"
-							className="p-4 rounded-lg  text-white lg:w-[50%] w-full  bg-headerColor"
-						>
-							Save
-						</button>
-					</div>
 				</form>
+			</div>
+
+			{/* Fixed action buttons at the bottom */}
+			<div className="flex  p-4  gap-8">
+				<button
+					onClick={handleDelete}
+					className="p-4 rounded-lg w-full md:w-[25%] text-white bg-[#AB3535]"
+				>
+					Delete
+				</button>
+				<button
+					onClick={handleSubmit}
+					type="submit"
+					className="p-4 rounded-lg w-full lg:w-[50%] text-white bg-headerColor"
+				>
+					Save
+				</button>
 			</div>
 		</section>
 	);
