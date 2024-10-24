@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-function Edit({ editTask, tasks }) {
+function Edit({ editTask, tasks, deleteTask }) {
 	const { id } = useParams(); // Get the task ID from the URL
 	const taskId = parseInt(id); // Ensure the ID is a number
 
-	// Find the task by ID
 	const taskToEdit = tasks.find((task) => task.id === taskId);
 
-	// Local state for the form fields
 	const [taskName, setTaskName] = useState("");
 
-	// Load task data into form when component mounts
 	useEffect(() => {
 		if (taskToEdit) {
 			setTaskName(taskToEdit.name);
@@ -24,6 +21,11 @@ function Edit({ editTask, tasks }) {
 		if (taskToEdit) {
 			editTask(taskId, { name: taskName });
 		}
+	};
+
+	const handleDelete = () => {
+		deleteTask(taskToEdit.id);
+		// Redirect after deletion
 	};
 
 	return (
@@ -45,12 +47,15 @@ function Edit({ editTask, tasks }) {
 					</div>
 
 					{/* //actions */}
-					<div className=" flex w-full gap-4 absolute bottom-4 z-[500]">
-						<button className="p-4 rounded-lg w-full md:w-[25%] text-white  bg-[#AB3535] mt-auto ">
+					<div className=" flex w-full gap-4 absolute bottom-4">
+						<button
+							onClick={handleDelete}
+							className="p-4 rounded-lg w-full md:w-[25%] text-white  bg-[#AB3535] mt-auto "
+						>
 							Delete
 						</button>
 						<button
-							onClick={() => handleSubmit}
+							onClick={handleSubmit}
 							type="submit"
 							className="p-4 rounded-lg  text-white lg:w-[50%] w-full  bg-headerColor"
 						>

@@ -13,9 +13,7 @@ function Home({ addTask }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (taskName.trim() !== "") {
-			// Call the addTask function passed as a prop
 			addTask({ name: taskName, status: false });
-			// Clear the input after adding
 			setTaskName("");
 		}
 	};

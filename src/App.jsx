@@ -20,6 +20,7 @@ const editTask = (id, updatedTask) => {
   );
 };
 
+//toggle
 const toggleTaskStatus = (id) => {
   setTasks((prev) =>
     prev.map((task) =>
@@ -28,12 +29,16 @@ const toggleTaskStatus = (id) => {
   );
 };
 
+const deleteTask = (id) => {
+  setTasks((prev) => prev.filter((task) => task.id !== id));
+};
+
 	return (
 		<Router>
 			<Layout tasks={tasks} toggleTaskStatus={toggleTaskStatus}>
 				<Routes>
 					<Route path="/" element={<Home addTask={addTask}/>} />
-					<Route path="/edit/:id" element={<Edit editTask={editTask} tasks={tasks} />} />
+					<Route path="/edit/:id" element={<Edit editTask={editTask} tasks={tasks} deleteTask={deleteTask} />} />
 				</Routes>
 			</Layout>
 		</Router>
